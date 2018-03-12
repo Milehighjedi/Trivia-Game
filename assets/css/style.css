@@ -62,7 +62,7 @@ p {
     background-color: #cc6d29;
     text-align: center;
 }
-.quizMessage {
+.message {
     background-color: peachpuff;
     border-radius: 6px;
     width: 30%;
@@ -72,7 +72,7 @@ p {
     font-family:'tangerine', serif;
     color: #cc6d29;
 }
-.choiceList {
+.choiceGroup {
     font-family:'tangerine', serif;
     color: #cc6d29;
 }

@@ -66,7 +66,7 @@ var questions = [{
 
 var currentQuestion = 0;
 var correctAnswers = 0;
-var quizOver = false;
+var Over = false;
 
 
 
@@ -76,23 +76,25 @@ $(document).ready(function () {
 
 
     displayCurrentQuestion();
-    $(this).find(".quizMessage").hide();
+    $(this).find(".message").hide();
 
 
     $(this).find(".submit").on("click", function () {
        
-        
+        //setInterval(function(currentQuestion){
+            //currentQuestion++;
+            //}, 15000);
 
-        if (!quizOver) {
+        if (!Over) {
 
             value = $("input[type='radio']:checked").val();
 
             if (value == undefined) {
-                $(document).find(".quizMessage").text("Please select an answer");
-                $(document).find(".quizMessage").show();
+                $(document).find(".message").text("Please select an answer");
+                $(document).find(".message").show();
             } else {
 
-                $(document).find(".quizMessage").hide();
+                $(document).find(".message").hide();
 
                 if (value == questions[currentQuestion].correctAnswer) {
                     correctAnswers++;
@@ -104,11 +106,11 @@ $(document).ready(function () {
                 } else {
                     displayScore();
                     $(document).find(".submit").text("Play Again?");
-                    quizOver = true;
+                    Over = true;
                 }
             }
         } else { 
-            quizOver = false;
+            Over = false;
             $(document).find(".submit").text("Submit");
             resetQuiz();
             displayCurrentQuestion();
@@ -125,19 +127,19 @@ function displayCurrentQuestion() {
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
-    var choiceList = $(document).find(".quizContainer > .choiceList");
+    var choiceGroup = $(document).find(".quizContainer > .choiceGroup");
     var numChoices = questions[currentQuestion].choices.length;
 
     
     $(questionClass).text(question);
 
     
-    $(choiceList).find("li").remove();
+    $(choiceGroup).find("li").remove();
 
     var choice;
     for (i = 0; i < numChoices; i++) {
         choice = questions[currentQuestion].choices[i];
-        $('<li><input type="radio" value=' + i + ' name="dynradio" />' + choice + '</li>').appendTo(choiceList);
+        $('<li><input type="radio" value=' + i + ' name="dynradio" />' + choice + '</li>').appendTo(choiceGroup);
     }
 }
 
