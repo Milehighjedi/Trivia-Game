@@ -81,15 +81,15 @@ $(document).ready(function () {
 
     $(this).find(".submit").on("click", function () {
        
-        //setInterval(function(currentQuestion){
-            //currentQuestion++;
-            //}, 15000);
+        setTimeout(function(){
+            currentQuestion++;
+            }, 15000);
 
         if (!Over) {
 
             value = $("input[type='radio']:checked").val();
 
-            if (value == undefined) {
+            if (value == null) {
                 $(document).find(".message").text("Please select an answer");
                 $(document).find(".message").show();
             } else {
